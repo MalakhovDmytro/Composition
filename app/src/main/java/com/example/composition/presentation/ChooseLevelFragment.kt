@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.composition.R
 import com.example.composition.databinding.FragmentChooseLevelBinding
+import com.example.composition.domain.entity.Level
 
 
 class ChooseLevelFragment : Fragment() {
@@ -44,7 +45,7 @@ class ChooseLevelFragment : Fragment() {
         _binding = null
     }
 
-    private fun launchGameFragment(level: com.example.composition.domain.entity.Level) {
+    private fun launchGameFragment(level: Level) {
         requireActivity().supportFragmentManager.beginTransaction()
             .replace(R.id.main_container, GameFragment.newInstance(level))
             .addToBackStack(GameFragment.NAME)

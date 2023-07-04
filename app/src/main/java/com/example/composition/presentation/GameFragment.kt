@@ -53,7 +53,9 @@ class GameFragment : Fragment() {
     }
 
     private fun parseArgs() {
-        level = requireArguments().getSerializable(KEY_LEVEl) as com.example.composition.domain.entity.Level
+        requireArguments().getParcelable<com.example.composition.domain.entity.Level>(KEY_LEVEl)?.let {
+            level = it
+        }
     }
 
     private fun launchGameFinishedFragment(gameResult: GameResult) {
