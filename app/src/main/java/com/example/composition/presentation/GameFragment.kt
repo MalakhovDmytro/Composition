@@ -8,12 +8,13 @@ import androidx.fragment.app.Fragment
 import com.example.composition.R
 import com.example.composition.databinding.FragmentGameBinding
 import com.example.composition.domain.entity.GameResult
+import com.example.composition.domain.entity.GameSettings
 
 import java.util.logging.Level
 
 class GameFragment : Fragment() {
 
-    private lateinit var level: Level
+    private lateinit var level: com.example.composition.domain.entity.Level
 
     private var _binding: FragmentGameBinding? = null
     private val binding: FragmentGameBinding
@@ -34,6 +35,16 @@ class GameFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.tvOption1.setOnClickListener {
+            launchGameFinishedFragment(
+                GameResult(
+                true,
+            0,
+                0,
+                GameSettings(0, 0, 0, 0)
+            )
+            )
+        }
     }
 
     override fun onDestroyView() {
@@ -42,7 +53,7 @@ class GameFragment : Fragment() {
     }
 
     private fun parseArgs() {
-        level = requireArguments().getSerializable(KEY_LEVEl) as Level
+        level = requireArguments().getSerializable(KEY_LEVEl) as com.example.composition.domain.entity.Level
     }
 
     private fun launchGameFinishedFragment(gameResult: GameResult) {
@@ -53,6 +64,8 @@ class GameFragment : Fragment() {
     }
 
     companion object {
+
+        const val  NAME = "GameFragment"
 
         private const val KEY_LEVEl = "level"
 
