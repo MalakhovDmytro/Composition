@@ -36,7 +36,6 @@ class GameViewModel(
     private val _question = MutableLiveData<Question>()
     val question: LiveData<Question>
         get() = _question
-
     private val _percentOfRightAnswers = MutableLiveData<Int>()
     val percentOfRightAnswers: LiveData<Int>
         get() = _percentOfRightAnswers
